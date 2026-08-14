@@ -6,16 +6,16 @@
 
 <h1>Excluir projeto</h1>
 
-<div class="alert alert-warning">
+<div class="alert warning">
     Tem certeza de que deseja excluir este projeto?
 </div>
 
 <p><strong>@Model.Titulo</strong></p>
 <p>@Model.Descricao</p>
 
-<form asp-action="Excluir" method="post">
+<form asp-action="Excluir" method="post" class="form-actions">
     <input type="hidden" asp-for="Id" />
 
-    <button type="submit" class="btn btn-danger">Confirmar exclusão</button>
-    <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
+    <button type="submit" class="button danger">Confirmar exclusão</button>
+    <a asp-action="Index" class="button secondary">Cancelar</a>
 </form>

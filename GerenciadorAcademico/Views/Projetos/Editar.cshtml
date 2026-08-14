@@ -6,30 +6,32 @@
 
 <h1>Editar projeto</h1>
 
-<form asp-action="Editar" method="post">
+<form asp-action="Editar" method="post" class="form-card">
     <input asp-for="Id" type="hidden" />
-    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <div asp-validation-summary="ModelOnly" class="validation"></div>
 
-    <div class="mb-3">
-        <label asp-for="Titulo" class="form-label"></label>
-        <input asp-for="Titulo" class="form-control" />
-        <span asp-validation-for="Titulo" class="text-danger"></span>
+    <div>
+        <label asp-for="Titulo"></label>
+        <input asp-for="Titulo" class="input" />
+        <span asp-validation-for="Titulo" class="validation"></span>
     </div>
 
-    <div class="mb-3">
-        <label asp-for="Descricao" class="form-label"></label>
-        <textarea asp-for="Descricao" class="form-control"></textarea>
-        <span asp-validation-for="Descricao" class="text-danger"></span>
+    <div>
+        <label asp-for="Descricao"></label>
+        <textarea asp-for="Descricao" class="input"></textarea>
+        <span asp-validation-for="Descricao" class="validation"></span>
     </div>
 
-    <div class="mb-3">
-        <label asp-for="CargaHoraria" class="form-label"></label>
-        <input asp-for="CargaHoraria" class="form-control" />
-        <span asp-validation-for="CargaHoraria" class="text-danger"></span>
+    <div>
+        <label asp-for="CargaHoraria"></label>
+        <input asp-for="CargaHoraria" class="input" />
+        <span asp-validation-for="CargaHoraria" class="validation"></span>
     </div>
 
-    <button type="submit" class="btn btn-primary">Salvar alterações</button>
-    <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
+    <div class="form-actions">
+        <button type="submit" class="button">Salvar alterações</button>
+        <a asp-action="Index" class="button secondary">Cancelar</a>
+    </div>
 </form>
 
 @section Scripts {
