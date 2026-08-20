@@ -1,4 +1,4 @@
-﻿@model List<GerenciadorAcademico.Models.Projeto>
+﻿@model GerenciadorAcademico.ViewModels.ProjetosIndexViewModel
 
 @{
     ViewData["Title"] = "Projetos Acadêmicos";
@@ -9,9 +9,71 @@
         <h1>Projetos Acadêmicos</h1>
         <p>Gerencie os projetos cadastrados.</p>
     </div>
+
     <a asp-action="Cadastrar" class="button">Novo projeto</a>
 </div>
 
+<!-- Barra de pesquisa -->
+<form asp-action="Index" method="get" class="toolbar">
+    <div class="search-form">
+        <input type="text"
+               name="pesquisa"
+               value="@Model.TextoPesquisa"
+               class="input"
+               placeholder="Pesquisar por título..." />
+
+        <input type="hidden"
+               name="ordenarPor"
+               value="@Model.OrdenarPor" />
+
+        <button type="submit" class="button">
+            Pesquisar
+        </button>
+
+        <a asp-action="Index" class="button secondary">
+            Limpar
+        </a>
+    </div>
+</form>
+
+<!-- Contador -->
+<div class="list-meta">
+    @if (string.IsNullOrWhiteSpace(Model.TextoPesquisa))
+    {
+        <p class="counter">
+            @Model.QuantidadeTotal projeto(s) cadastrado(s)
+        </p>
+    }
+    else
+    {
+        <p class="counter">
+            @Model.QuantidadeTotal resultado(s) para
+            "<strong>@Model.TextoPesquisa</strong>"
+        </p>
+    }
+</div>
+
+<!-- Ordenação -->
+
+<p class="sort-links">
+    Ordenar por:
+
+    <a asp-action="Index"
+       asp-route-pesquisa="@Model.TextoPesquisa"
+       asp-route-ordenarPor="titulo"
+       class="@(Model.OrdenarPor == "titulo" ? "active" : null)">
+        Título
+    </a>
+
+    <a asp-action="Index"
+       asp-route-pesquisa="@Model.TextoPesquisa"
+       asp-route-ordenarPor="cargaHoraria"
+       class="@(Model.OrdenarPor == "cargaHoraria" ? "active" : null)">
+        Carga horária
+    </a>
+</p>
+
+<!-- Mensagem -->
 @if (TempData["Mensagem"] is not null)
 {
     <div class="alert success">
@@ -19,35 +81,64 @@
     </div>
 }
 
-@if (Model.Count == 0)
+<!-- Lista de projetos -->
+@if (Model.Projetos.Count == 0)
 {
-    <div class="empty">Nenhum projeto cadastrado.</div>
+    <div class="empty">
+        @if (string.IsNullOrWhiteSpace(Model.TextoPesquisa))
+        {
+            <text>Nenhum projeto cadastrado.</text>
+        }
+        else
+        {
+            <text>
+                Nenhum projeto encontrado para
+                "@Model.TextoPesquisa".
+            </text>
+        }
+    </div>
 }
 else
 {
-    <div class="table-wrap">
-        <table>
-            <thead>
+    <table>
+        <thead>
+            <tr>
+                <th>Título</th>
+                <th>Carga horária</th>
+                
+                <th>Ações</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach (var projeto in Model.Projetos)
+            {
                 <tr>
-                    <th>Título</th>
-                    <th>Carga horária</th>
-                    <th>Ações</th>
+                    <td>@projeto.Titulo</td>
+                    <td>@projeto.CargaHoraria horas</td>
+                    
+
+                    <td class="actions">
+                        <a asp-action="Detalhes"
+                           asp-route-id="@projeto.Id">
+                            Detalhes
+                        </a>
+
+                        <a asp-action="Editar"
+                           asp-route-id="@projeto.Id">
+                            Editar
+                        </a>
+
+                        <a class="danger-link"
+                           asp-action="Excluir"
+                           asp-route-id="@projeto.Id">
+                            Excluir
+                        </a>
+
                 </tr>
-            </thead>
-            <tbody>
-                @foreach (var projeto in Model)
-                {
-                    <tr>
-                        <td>@projeto.Titulo</td>
-                        <td>@projeto.CargaHoraria horas</td>
-                        <td class="actions">
-                            <a asp-action="Detalhes" asp-route-id="@projeto.Id">Detalhes</a>
-                            <a asp-action="Editar" asp-route-id="@projeto.Id">Editar</a>
-                            <a class="danger-link" asp-action="Excluir" asp-route-id="@projeto.Id">Excluir</a>
-                        </td>
-                    </tr>
-                }
-            </tbody>
-        </table>
-    </div>
+            }
+        </tbody>
+    </table>
 }
+
+

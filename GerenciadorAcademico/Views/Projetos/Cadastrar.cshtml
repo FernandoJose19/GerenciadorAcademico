@@ -16,9 +16,14 @@
     </div>
 
     <div class="mb-3">
-        <label asp-for="Descricao" class="form-label">Descrição</label>
-        <textarea asp-for="Descricao" class="form-control"></textarea>
-        <span asp-validation-for="Descricao" class="text-danger"></span>
+        <label asp-for="Descricao"></label>
+
+        <textarea asp-for="Descricao"
+                  class="input"></textarea>
+
+        <span asp-validation-for="Descricao"
+              class="validation"></span>
+
     </div>
 
     <div class="mb-3">

@@ -10,4 +10,7 @@ public interface IProjetoService
     void Adicionar(NovoProjetoViewModel model);
     bool Atualizar(EditarProjetoViewModel model);
     bool Remover(int id);
+    List<Projeto> PesquisarPorTitulo(string? titulo);
+
+    List<Projeto> Ordenar(IEnumerable<Projeto> projetos, string? ordenarPor);
 }

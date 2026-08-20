@@ -23,8 +23,6 @@ public class ProjetoService : IProjetoService
         }
 
         ];
-
-
     public List<Projeto> Listar()
     {
         return _projetos;
@@ -75,5 +73,27 @@ public class ProjetoService : IProjetoService
     private int GerarNovoId()
     {
         return _projetos.Count == 0 ? 1 : _projetos.Max(projeto => projeto.Id) + 1;
+    }
+
+
+    
+    public List<Projeto> PesquisarPorTitulo(string? titulo)
+    {
+        if (string.IsNullOrWhiteSpace(titulo))
+            return Listar();
+
+        return _projetos
+            .Where(projeto => projeto.Titulo.Contains(titulo, StringComparison.CurrentCultureIgnoreCase))
+            .ToList();
+    }
+
+    public List<Projeto> Ordenar(IEnumerable<Projeto> projetos, string? ordenarPor)
+    {
+        return ordenarPor?.ToLowerInvariant() switch
+        {
+            "titulo" => projetos.OrderBy(projeto => projeto.Titulo).ToList(),
+            "cargahoraria" => projetos.OrderBy(projeto => projeto.CargaHoraria).ToList(),
+            _ => projetos.ToList()
+        };
     }
 }
