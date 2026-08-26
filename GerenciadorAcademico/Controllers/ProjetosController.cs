@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using GerenciadorAcademico.Services;
 using GerenciadorAcademico.ViewModels;
 
@@ -14,13 +15,26 @@ namespace GerenciadorAcademico.Controllers
             _projetoService = projetoService;
         }
 
+        // Converte a lista de professores em uma lista
+        // que pode ser utilizada pelo <select> da View.
+        private List<SelectListItem> ObterProfessoresSelectList()
+        {
+            return _projetoService.ListarProfessores()
+                .Select(professor => new SelectListItem
+                {
+                    Value = professor.Id.ToString(),
+                    Text = professor.Nome
+                })
+                .ToList();
+        }
+
+
+
         public IActionResult Index(string? pesquisa, string? ordenarPor)
         {
             var projetos = _projetoService.PesquisarPorTitulo(pesquisa);
 
-            projetos = _projetoService.Ordenar(
-                projetos,
-                ordenarPor);
+            projetos = _projetoService.Ordenar(projetos, ordenarPor);
 
             var model = new ProjetosIndexViewModel
             {
@@ -44,24 +58,42 @@ namespace GerenciadorAcademico.Controllers
             return View(projeto);
         }
 
+
+
         [HttpGet]
         public IActionResult Cadastrar()
         {
-            return View();
+            var model = new NovoProjetoViewModel
+            {
+                Professores = ObterProfessoresSelectList()
+            };
+
+            return View(model);
         }
+
+
 
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult Cadastrar(NovoProjetoViewModel model)
         {
             if (!ModelState.IsValid)
+            {
+                // Recarrega os professores caso exista
+                // algum erro de validação.
+                model.Professores = ObterProfessoresSelectList();
+
                 return View(model);
+            }
 
             _projetoService.Adicionar(model);
+
             TempData["Mensagem"] = "Projeto cadastrado com sucesso!";
 
             return RedirectToAction(nameof(Index));
         }
+
+
 
         [HttpGet]
         public IActionResult Editar(int id)
@@ -76,18 +108,32 @@ namespace GerenciadorAcademico.Controllers
                 Id = projeto.Id,
                 Titulo = projeto.Titulo,
                 Descricao = projeto.Descricao,
-                CargaHoraria = projeto.CargaHoraria
+                CargaHoraria = projeto.CargaHoraria,
+
+                // Mantém o professor atualmente associado
+                // ao projeto selecionado.
+                ProfessorId = projeto.ProfessorId,
+
+                // Carrega os professores para o <select>.
+                Professores = ObterProfessoresSelectList()
             };
 
             return View(model);
         }
+
 
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult Editar(EditarProjetoViewModel model)
         {
             if (!ModelState.IsValid)
+            {
+                // Necessário para que o <select> de professores
+                // continue preenchido após um erro de validação.
+                model.Professores = ObterProfessoresSelectList();
+
                 return View(model);
+            }
 
             var atualizado = _projetoService.Atualizar(model);
 
@@ -95,8 +141,11 @@ namespace GerenciadorAcademico.Controllers
                 return NotFound();
 
             TempData["Mensagem"] = "Projeto atualizado com sucesso!";
+
             return RedirectToAction(nameof(Index));
         }
+
+
 
         [HttpGet]
         public IActionResult Excluir(int id)
@@ -109,6 +158,8 @@ namespace GerenciadorAcademico.Controllers
             return View(projeto);
         }
 
+
+
         [HttpPost, ActionName("Excluir")]
         [ValidateAntiForgeryToken]
         public IActionResult ConfirmarExclusao(int id)
@@ -119,6 +170,7 @@ namespace GerenciadorAcademico.Controllers
                 return NotFound();
 
             TempData["Mensagem"] = "Projeto excluído com sucesso!";
+
             return RedirectToAction(nameof(Index));
         }
     }

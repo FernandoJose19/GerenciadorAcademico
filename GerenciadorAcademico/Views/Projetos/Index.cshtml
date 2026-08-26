@@ -10,12 +10,17 @@
         <p>Gerencie os projetos cadastrados.</p>
     </div>
 
-    <a asp-action="Cadastrar" class="button">Novo projeto</a>
+    <a asp-action="Cadastrar" class="button">
+        Novo projeto
+    </a>
 </div>
 
-<!-- Barra de pesquisa -->
+
+
 <form asp-action="Index" method="get" class="toolbar">
-    <div class="search-form">
+
+    <div class="search-bar">
+
         <input type="text"
                name="pesquisa"
                value="@Model.TextoPesquisa"
@@ -30,14 +35,18 @@
             Pesquisar
         </button>
 
-        <a asp-action="Index" class="button secondary">
+        <a asp-action="Index"
+           class="button secondary">
             Limpar
         </a>
+
     </div>
+
 </form>
 
-<!-- Contador -->
+
 <div class="list-meta">
+
     @if (string.IsNullOrWhiteSpace(Model.TextoPesquisa))
     {
         <p class="counter">
@@ -51,11 +60,13 @@
             "<strong>@Model.TextoPesquisa</strong>"
         </p>
     }
+
 </div>
 
-<!-- Ordenação -->
+
 
 <p class="sort-links">
+
     Ordenar por:
 
     <a asp-action="Index"
@@ -71,9 +82,10 @@
        class="@(Model.OrdenarPor == "cargaHoraria" ? "active" : null)">
         Carga horária
     </a>
+
 </p>
 
-<!-- Mensagem -->
+
 @if (TempData["Mensagem"] is not null)
 {
     <div class="alert success">
@@ -81,13 +93,15 @@
     </div>
 }
 
-<!-- Lista de projetos -->
 @if (Model.Projetos.Count == 0)
 {
     <div class="empty">
+
         @if (string.IsNullOrWhiteSpace(Model.TextoPesquisa))
         {
-            <text>Nenhum projeto cadastrado.</text>
+            <text>
+                Nenhum projeto cadastrado.
+            </text>
         }
         else
         {
@@ -96,29 +110,42 @@
                 "@Model.TextoPesquisa".
             </text>
         }
+
     </div>
 }
 else
 {
     <table>
+
         <thead>
             <tr>
                 <th>Título</th>
+                <th>Professor</th>
                 <th>Carga horária</th>
-                
                 <th>Ações</th>
             </tr>
         </thead>
 
         <tbody>
+
             @foreach (var projeto in Model.Projetos)
             {
                 <tr>
-                    <td>@projeto.Titulo</td>
-                    <td>@projeto.CargaHoraria horas</td>
-                    
+
+                    <td>
+                        @projeto.Titulo
+                    </td>
+
+                    <td>
+                        @projeto.Professor?.Nome
+                    </td>
+
+                    <td>
+                        @projeto.CargaHoraria horas
+                    </td>
 
                     <td class="actions">
+
                         <a asp-action="Detalhes"
                            asp-route-id="@projeto.Id">
                             Detalhes
@@ -129,16 +156,18 @@ else
                             Editar
                         </a>
 
-                        <a class="danger-link"
-                           asp-action="Excluir"
-                           asp-route-id="@projeto.Id">
+                        <a asp-action="Excluir"
+                           asp-route-id="@projeto.Id"
+                           class="danger-link">
                             Excluir
                         </a>
 
+                    </td>
+
                 </tr>
             }
+
         </tbody>
+
     </table>
 }
-
-

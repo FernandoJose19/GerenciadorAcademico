@@ -193,3 +193,22 @@ dd {
 }
 
 
+/*Novo*/
+
+.search-bar {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+}
+
+    .search-bar .input {
+        flex: 1;
+        margin-bottom: 0;
+    }
+
+.search-actions {
+    display: flex;
+    gap: 6px;
+    flex-shrink: 0;
+}

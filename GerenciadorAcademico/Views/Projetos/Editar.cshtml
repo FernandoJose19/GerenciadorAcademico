@@ -1,42 +1,33 @@
 ﻿@model GerenciadorAcademico.ViewModels.EditarProjetoViewModel
 
 @{
-    ViewData["Title"] = "Editar projeto";
+    ViewData["Title"] = "Editar Projeto";
 }
 
-<h1>Editar projeto</h1>
+<h1>Editar Projeto</h1>
 
-<form asp-action="Editar" method="post" class="form-card">
+<form asp-action="Editar" method="post">
+
     <input asp-for="Id" type="hidden" />
-    <div asp-validation-summary="ModelOnly" class="validation"></div>
 
-    <div>
-        <label asp-for="Titulo"></label>
-        <input asp-for="Titulo" class="input" />
-        <span asp-validation-for="Titulo" class="validation"></span>
+    <div asp-validation-summary="ModelOnly"
+         class="text-danger">
     </div>
 
-    <div>
-        <label asp-for="Descricao"></label>
+    <partial name="_FormularioProjeto"
+             model="(GerenciadorAcademico.ViewModels.ProjetoFormularioViewModel)Model" />
 
-        <textarea asp-for="Descricao"
-                  class="input"></textarea>
+    <div class="mt-3">
+        <button type="submit" class="btn btn-primary">
+            Salvar alterações
+        </button>
 
-        <span asp-validation-for="Descricao"
-              class="validation"></span>
-
+        <a asp-action="Index"
+           class="btn btn-secondary">
+            Cancelar
+        </a>
     </div>
 
-    <div>
-        <label asp-for="CargaHoraria"></label>
-        <input asp-for="CargaHoraria" class="input" />
-        <span asp-validation-for="CargaHoraria" class="validation"></span>
-    </div>
-
-    <div class="form-actions">
-        <button type="submit" class="button">Salvar alterações</button>
-        <a asp-action="Index" class="button secondary">Cancelar</a>
-    </div>
 </form>
 
 @section Scripts {

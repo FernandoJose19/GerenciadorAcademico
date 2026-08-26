@@ -11,6 +11,7 @@ public interface IProjetoService
     bool Atualizar(EditarProjetoViewModel model);
     bool Remover(int id);
     List<Projeto> PesquisarPorTitulo(string? titulo);
-
     List<Projeto> Ordenar(IEnumerable<Projeto> projetos, string? ordenarPor);
+    List<Professor> ListarProfessores();
+
 }
