@@ -1,7 +1,8 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using GerenciadorAcademico.Services;
+﻿using GerenciadorAcademico.Services;
 using GerenciadorAcademico.ViewModels;
+
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace GerenciadorAcademico.Controllers
 {
@@ -9,31 +10,14 @@ namespace GerenciadorAcademico.Controllers
     {
         private readonly IProjetoService _projetoService;
 
-        // O construtor recebe o serviço injetado automaticamente
         public ProjetosController(IProjetoService projetoService)
         {
             _projetoService = projetoService;
         }
 
-        // Converte a lista de professores em uma lista
-        // que pode ser utilizada pelo <select> da View.
-        private List<SelectListItem> ObterProfessoresSelectList()
+        public async Task<IActionResult> Index(string? pesquisa, string? ordenarPor)
         {
-            return _projetoService.ListarProfessores()
-                .Select(professor => new SelectListItem
-                {
-                    Value = professor.Id.ToString(),
-                    Text = professor.Nome
-                })
-                .ToList();
-        }
-
-
-
-        public IActionResult Index(string? pesquisa, string? ordenarPor)
-        {
-            var projetos = _projetoService.PesquisarPorTitulo(pesquisa);
-
+            var projetos = await _projetoService.PesquisarPorTituloAsync(pesquisa);
             projetos = _projetoService.Ordenar(projetos, ordenarPor);
 
             var model = new ProjetosIndexViewModel
@@ -47,10 +31,9 @@ namespace GerenciadorAcademico.Controllers
             return View(model);
         }
 
-
-        public IActionResult Detalhes(int id)
+        public async Task<IActionResult> Detalhes(int id)
         {
-            var projeto = _projetoService.ObterPorId(id);
+            var projeto = await _projetoService.ObterPorIdAsync(id);
 
             if (projeto is null)
                 return NotFound();
@@ -58,47 +41,36 @@ namespace GerenciadorAcademico.Controllers
             return View(projeto);
         }
 
-
-
         [HttpGet]
-        public IActionResult Cadastrar()
+        public async Task<IActionResult> Cadastrar()
         {
             var model = new NovoProjetoViewModel
             {
-                Professores = ObterProfessoresSelectList()
+                Professores = await ObterProfessoresSelectListAsync()
             };
 
             return View(model);
         }
 
-
-
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Cadastrar(NovoProjetoViewModel model)
+        public async Task<IActionResult> Cadastrar(NovoProjetoViewModel model)
         {
+            model.Professores = await ObterProfessoresSelectListAsync();
+
             if (!ModelState.IsValid)
-            {
-                // Recarrega os professores caso exista
-                // algum erro de validação.
-                model.Professores = ObterProfessoresSelectList();
-
                 return View(model);
-            }
 
-            _projetoService.Adicionar(model);
-
+            await _projetoService.AdicionarAsync(model);
             TempData["Mensagem"] = "Projeto cadastrado com sucesso!";
 
             return RedirectToAction(nameof(Index));
         }
 
-
-
         [HttpGet]
-        public IActionResult Editar(int id)
+        public async Task<IActionResult> Editar(int id)
         {
-            var projeto = _projetoService.ObterPorId(id);
+            var projeto = await _projetoService.ObterPorIdAsync(id);
 
             if (projeto is null)
                 return NotFound();
@@ -109,48 +81,35 @@ namespace GerenciadorAcademico.Controllers
                 Titulo = projeto.Titulo,
                 Descricao = projeto.Descricao,
                 CargaHoraria = projeto.CargaHoraria,
-
-                // Mantém o professor atualmente associado
-                // ao projeto selecionado.
                 ProfessorId = projeto.ProfessorId,
-
-                // Carrega os professores para o <select>.
-                Professores = ObterProfessoresSelectList()
+                Professores = await ObterProfessoresSelectListAsync()
             };
 
             return View(model);
         }
 
-
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Editar(EditarProjetoViewModel model)
+        public async Task<IActionResult> Editar(EditarProjetoViewModel model)
         {
+            model.Professores = await ObterProfessoresSelectListAsync();
+
             if (!ModelState.IsValid)
-            {
-                // Necessário para que o <select> de professores
-                // continue preenchido após um erro de validação.
-                model.Professores = ObterProfessoresSelectList();
-
                 return View(model);
-            }
 
-            var atualizado = _projetoService.Atualizar(model);
+            var atualizado = await _projetoService.AtualizarAsync(model);
 
             if (!atualizado)
                 return NotFound();
 
             TempData["Mensagem"] = "Projeto atualizado com sucesso!";
-
             return RedirectToAction(nameof(Index));
         }
 
-
-
         [HttpGet]
-        public IActionResult Excluir(int id)
+        public async Task<IActionResult> Excluir(int id)
         {
-            var projeto = _projetoService.ObterPorId(id);
+            var projeto = await _projetoService.ObterPorIdAsync(id);
 
             if (projeto is null)
                 return NotFound();
@@ -158,20 +117,28 @@ namespace GerenciadorAcademico.Controllers
             return View(projeto);
         }
 
-
-
         [HttpPost, ActionName("Excluir")]
         [ValidateAntiForgeryToken]
-        public IActionResult ConfirmarExclusao(int id)
+        public async Task<IActionResult> ConfirmarExclusao(int id)
         {
-            var removido = _projetoService.Remover(id);
+            var removido = await _projetoService.RemoverAsync(id);
 
             if (!removido)
                 return NotFound();
 
             TempData["Mensagem"] = "Projeto excluído com sucesso!";
-
             return RedirectToAction(nameof(Index));
+        }
+
+        private async Task<List<SelectListItem>> ObterProfessoresSelectListAsync()
+        {
+            return (await _projetoService.ListarProfessoresAsync())
+                .Select(professor => new SelectListItem
+                {
+                    Value = professor.Id.ToString(),
+                    Text = professor.Nome
+                })
+                .ToList();
         }
     }
 }

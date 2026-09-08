@@ -1,3 +1,4 @@
+using GerenciadorAcademico.Repositories;
 using GerenciadorAcademico.Services;
 
 namespace GerenciadorAcademico
@@ -12,7 +13,11 @@ namespace GerenciadorAcademico
             builder.Services.AddControllersWithViews();
 
             // Registrando nosso serviço como Singleton (uma única instância para toda a aplicação)
-            builder.Services.AddSingleton<IProjetoService, ProjetoService>();
+
+            builder.Services.AddSingleton<JsonFileStore>();
+            builder.Services.AddScoped<IProjetoRepository, ProjetoJsonRepository>();
+            builder.Services.AddScoped<IProfessorRepository, ProfessorJsonRepository>();
+            builder.Services.AddScoped<IProjetoService, ProjetoService>();
 
             var app = builder.Build();
 

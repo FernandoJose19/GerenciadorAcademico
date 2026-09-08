@@ -9,24 +9,19 @@
         <h1>Projetos Acadêmicos</h1>
         <p>Gerencie os projetos cadastrados.</p>
     </div>
-
     <a asp-action="Cadastrar" class="button">
         Novo projeto
     </a>
 </div>
 
-
-
 <form asp-action="Index" method="get" class="toolbar">
-
     <div class="search-bar">
-
         <input type="text"
                name="pesquisa"
                value="@Model.TextoPesquisa"
                class="input"
                placeholder="Pesquisar por título..." />
-
+    
         <input type="hidden"
                name="ordenarPor"
                value="@Model.OrdenarPor" />
@@ -34,16 +29,12 @@
         <button type="submit" class="button">
             Pesquisar
         </button>
-
         <a asp-action="Index"
            class="button secondary">
             Limpar
         </a>
-
     </div>
-
 </form>
-
 
 <div class="list-meta">
 
@@ -64,7 +55,7 @@
 </div>
 
 
-
+<div class="search-bar">
 <p class="sort-links">
 
     Ordenar por:
@@ -84,6 +75,7 @@
     </a>
 
 </p>
+</div>
 
 
 @if (TempData["Mensagem"] is not null)
