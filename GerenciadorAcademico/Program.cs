@@ -1,4 +1,7 @@
+using GerenciadorAcademico.Repositories;
 using GerenciadorAcademico.Services;
+using GerenciadorAcademico.Data;
+using Microsoft.EntityFrameworkCore;
 
 namespace GerenciadorAcademico
 {
@@ -8,11 +11,28 @@ namespace GerenciadorAcademico
         {
             var builder = WebApplication.CreateBuilder(args);
 
-            // Add services to the container.
+            var connectionString = builder.Configuration.GetConnectionString("AcademicoConnection")?? throw new InvalidOperationException(
+            "A conexão AcademicoConnection não foi configurada.");
+
+            builder.Services.AddDbContext<AcademicoContext>(options =>
+                options.UseSqlServer(connectionString));
+
             builder.Services.AddControllersWithViews();
 
-            // Registrando nosso serviço como Singleton (uma única instância para toda a aplicação)
-            builder.Services.AddSingleton<IProjetoService, ProjetoService>();
+            builder.Services.AddSingleton<JsonFileStore>();
+
+            builder.Services.AddScoped<
+                IProjetoRepository,
+                ProjetoEfRepository>();
+
+            builder.Services.AddScoped<
+                IProfessorRepository,
+                ProfessorEfRepository>();
+
+            builder.Services.AddScoped<
+                IProjetoService,
+                ProjetoService>();
+
 
             var app = builder.Build();
 
@@ -32,7 +52,7 @@ namespace GerenciadorAcademico
             app.MapStaticAssets();
             app.MapControllerRoute(
                 name: "default",
-                pattern: "{controller=Home}/{action=index}/{id?}")
+                pattern: "{controller=Projetos}/{action=index}/{id?}")
                 .WithStaticAssets();
 
             app.Run();

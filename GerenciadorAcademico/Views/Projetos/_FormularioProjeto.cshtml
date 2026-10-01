@@ -1,0 +1,48 @@
+﻿@model GerenciadorAcademico.ViewModels.ProjetoFormularioViewModel
+
+<div class="mb-3">
+    <label asp-for="Titulo" class="form-label"></label>
+
+    <input asp-for="Titulo"
+           class="form-control" />
+
+    <span asp-validation-for="Titulo"
+          class="text-danger"></span>
+</div>
+
+<div class="mb-3">
+    <label asp-for="Descricao" class="form-label"></label>
+
+    <textarea asp-for="Descricao"
+              class="form-control"
+              rows="1"></textarea>
+
+    <span asp-validation-for="Descricao"
+          class="text-danger"></span>
+</div>
+
+<div class="mb-3">
+    <label asp-for="CargaHoraria" class="form-label"></label>
+
+    <input asp-for="CargaHoraria"
+           type="number"
+           class="form-control" />
+
+    <span asp-validation-for="CargaHoraria"
+          class="text-danger"></span>
+</div>
+
+<div class="mb-3">
+    <label asp-for="ProfessorId" class="form-label"></label>
+
+    <select asp-for="ProfessorId"
+            asp-items="Model.Professores"
+            class="form-select">
+
+        <option value="">Selecione um professor</option>
+
+    </select>
+
+    <span asp-validation-for="ProfessorId"
+          class="text-danger"></span>
+</div>

@@ -1,21 +1,72 @@
 ﻿@model GerenciadorAcademico.Models.Projeto
 
 @{
-    ViewData["Title"] = "Detalhes do projeto";
+    ViewData["Title"] = "Detalhes do Projeto";
 }
 
-<h1>Detalhes do projeto</h1>
+<div class="page-heading">
+    <div>
+        <h1>Detalhes do Projeto</h1>
+        <p>Visualize as informações do projeto acadêmico.</p>
+    </div>
 
-<dl class="row">
-    <dt class="col-sm-3">Título</dt>
-    <dd class="col-sm-9">@Model.Titulo</dd>
+    <div>
+        <a asp-action="Editar"
+           asp-route-id="@Model.Id"
+           class="button">
+            Editar
+        </a>
 
-    <dt class="col-sm-3">Descrição</dt>
-    <dd class="col-sm-9">@Model.Descricao</dd>
+        <a asp-action="Index"
+           class="button secondary">
+            Voltar
+        </a>
+    </div>
+</div>
 
-    <dt class="col-sm-3">Carga horária</dt>
-    <dd class="col-sm-9">@Model.CargaHoraria horas</dd>
-</dl>
+<div class="details">
 
-<a asp-action="Editar" asp-route-id="@Model.Id" class="btn btn-primary">Editar</a>
-<a asp-action="Index" class="btn btn-secondary">Voltar</a>
+    <div class="detail-item">
+        <strong>Título</strong>
+        <p>@Model.Titulo</p>
+    </div>
+
+    <div class="detail-item">
+        <strong>Descrição</strong>
+        <p>@Model.Descricao</p>
+    </div>
+
+    <div class="detail-item">
+        <strong>Carga horária</strong>
+        <p>@Model.CargaHoraria horas</p>
+    </div>
+
+    <div class="detail-item">
+        <strong>Professor</strong>
+        <p>
+            @if (Model.Professor is not null)
+            {
+                @Model.Professor.Nome
+            }
+            else
+            {
+                <span>Professor não informado</span>
+            }
+        </p>
+    </div>
+
+    <div class="detail-item">
+        <strong>E-mail do professor</strong>
+        <p>
+            @if (Model.Professor is not null)
+            {
+                @Model.Professor.Email
+            }
+            else
+            {
+                <span>Não informado</span>
+            }
+        </p>
+    </div>
+
+</div>
