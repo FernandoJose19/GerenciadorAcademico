@@ -67,6 +67,9 @@ namespace GerenciadorAcademico.Controllers
             return RedirectToAction(nameof(Index));
         }
 
+
+
+
         [HttpGet]
         public async Task<IActionResult> Editar(int id)
         {
@@ -129,6 +132,9 @@ namespace GerenciadorAcademico.Controllers
             TempData["Mensagem"] = "Projeto excluído com sucesso!";
             return RedirectToAction(nameof(Index));
         }
+
+
+
 
         private async Task<List<SelectListItem>> ObterProfessoresSelectListAsync()
         {

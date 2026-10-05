@@ -10,9 +10,10 @@ public class ProjetoFormularioViewModel
     [Display(Name = "Título")]
     public string Titulo { get; set; } = string.Empty;
 
-    [Required(ErrorMessage = "Informe a descrição do projeto.")]
-    [MinLength(20, ErrorMessage = "A descrição deve ter pelo menos 20 caracteres.")]
     [Display(Name = "Descrição")]
+    [Required(ErrorMessage = "Informe a descrição do projeto.")]
+    [MinLength(20,ErrorMessage = "A descrição deve ter pelo menos 20 caracteres.")]
+    [MaxLength(1000,ErrorMessage = "A descrição deve ter no máximo 1000 caracteres.")]
     public string Descricao { get; set; } = string.Empty;
 
     [Range(1, 1000, ErrorMessage = "A carga horária deve estar entre 1 e 1000 horas.")]

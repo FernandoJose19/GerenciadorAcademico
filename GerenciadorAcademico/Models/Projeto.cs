@@ -7,6 +7,7 @@
         public string Descricao { get; set; } = string.Empty;
         public int CargaHoraria { get; set; }
         public int ProfessorId { get; set; }
-        public Professor? Professor { get; set; }
+        public Professor Professor { get; set; } = null!;
+        public string? Area { get; set; }
     }
 }

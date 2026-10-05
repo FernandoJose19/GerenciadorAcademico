@@ -10,4 +10,6 @@ namespace GerenciadorAcademico.Repositories
         Task<bool> AtualizarAsync(Projeto projeto);
         Task<bool> RemoverAsync(int id);
     }
+
+   
 }

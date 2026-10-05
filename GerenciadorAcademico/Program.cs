@@ -1,5 +1,8 @@
+using GerenciadorAcademico.Data;
 using GerenciadorAcademico.Repositories;
 using GerenciadorAcademico.Services;
+
+using Microsoft.EntityFrameworkCore;
 
 namespace GerenciadorAcademico
 {
@@ -14,10 +17,20 @@ namespace GerenciadorAcademico
 
             // Registrando nosso serviço como Singleton (uma única instância para toda a aplicação)
 
-            builder.Services.AddSingleton<JsonFileStore>();
-            builder.Services.AddScoped<IProjetoRepository, ProjetoJsonRepository>();
-            builder.Services.AddScoped<IProfessorRepository, ProfessorJsonRepository>();
-            builder.Services.AddScoped<IProjetoService, ProjetoService>();
+            //builder.Services.AddSingleton<JsonFileStore>();
+            builder.Services.AddScoped<IProjetoRepository,ProjetoEfRepository>();
+
+            builder.Services.AddScoped<IProfessorRepository, ProfessorEfRepository>();
+
+            builder.Services.AddScoped<IProjetoService,ProjetoService>();
+
+            var connectionString = builder.Configuration
+            .GetConnectionString("AcademicoConnection")
+            ?? throw new InvalidOperationException(
+                "A conexão AcademicoConnection não foi configurada.");
+
+            builder.Services.AddDbContext<AcademicoContext>(options =>
+                options.UseSqlServer(connectionString));
 
             var app = builder.Build();
 
@@ -41,7 +54,6 @@ namespace GerenciadorAcademico
                 .WithStaticAssets();
 
             app.Run();
-            
         }
     }
 }

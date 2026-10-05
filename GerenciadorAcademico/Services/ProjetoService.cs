@@ -15,73 +15,100 @@ namespace GerenciadorAcademico.Services
             _professorRepository = professorRepository;
         }
 
-        public async Task<List<Professor>> ListarProfessoresAsync() => await _professorRepository.ListarAsync();
-
-        public async Task<List<Projeto>> ListarAsync()
+        public Task<List<Professor>> ListarProfessoresAsync()
         {
-            var projetos = await _projetoRepository.ListarAsync();
-            return await VincularProfessoresAsync(projetos);
+            return _professorRepository.ListarAsync();
         }
 
-        public async Task<List<Projeto>> PesquisarPorTituloAsync(string? titulo)
+        public Task<List<Projeto>> ListarAsync()
+        {
+            return _projetoRepository.ListarAsync();
+        }
+
+        public async Task<List<Projeto>> PesquisarPorTituloAsync(
+            string? titulo)
         {
             var projetos = await ListarAsync();
-            if (string.IsNullOrWhiteSpace(titulo)) return projetos;
 
-            return projetos.Where(projeto => projeto.Titulo.Contains(titulo, StringComparison.CurrentCultureIgnoreCase)).ToList();
+            if (string.IsNullOrWhiteSpace(titulo))
+                return projetos;
+
+            return projetos
+                .Where(projeto => projeto.Titulo.Contains(
+                    titulo,
+                    StringComparison.CurrentCultureIgnoreCase))
+                .ToList();
         }
 
-        public List<Projeto> Ordenar(IEnumerable<Projeto> projetos, string? ordenarPor) => ordenarPor?.ToLowerInvariant() switch
+        public List<Projeto> Ordenar(
+            IEnumerable<Projeto> projetos,
+            string? ordenarPor)
         {
-            "titulo" => projetos.OrderBy(projeto => projeto.Titulo).ToList(),
-            "cargahoraria" => projetos.OrderBy(projeto => projeto.CargaHoraria).ToList(),
-            _ => projetos.ToList()
-        };
+            return ordenarPor?.ToLowerInvariant() switch
+            {
+                "titulo" => projetos
+                    .OrderBy(projeto => projeto.Titulo)
+                    .ToList(),
 
-        public async Task<Projeto?> ObterPorIdAsync(int id)
+                "cargahoraria" => projetos
+                    .OrderBy(projeto => projeto.CargaHoraria)
+                    .ToList(),
+
+                _ => projetos.ToList()
+            };
+        }
+
+        public Task<Projeto?> ObterPorIdAsync(int id)
         {
-            var projeto = await _projetoRepository.ObterPorIdAsync(id);
-            if (projeto is not null)
-                projeto.Professor = await _professorRepository.ObterPorIdAsync(projeto.ProfessorId);
-            return projeto;
+            return _projetoRepository.ObterPorIdAsync(id);
         }
 
         public async Task AdicionarAsync(NovoProjetoViewModel model)
         {
-            if (await _professorRepository.ObterPorIdAsync(model.ProfessorId.Value) is null) // 
-                throw new InvalidOperationException("O professor selecionado não existe.");
+            var professor = await _professorRepository
+                .ObterPorIdAsync(model.ProfessorId.Value);
 
-            await _projetoRepository.AdicionarAsync(new Projeto
+            if (professor is null)
+            {
+                throw new InvalidOperationException(
+                    "O professor selecionado não existe.");
+            }
+
+            var projeto = new Projeto
             {
                 Titulo = model.Titulo,
                 Descricao = model.Descricao,
                 CargaHoraria = model.CargaHoraria,
-                ProfessorId = model.ProfessorId.Value // 
-            });
+                ProfessorId = model.ProfessorId.Value
+            };
+
+            await _projetoRepository.AdicionarAsync(projeto);
         }
 
-        public async Task<bool> AtualizarAsync(EditarProjetoViewModel model)
+        public async Task<bool> AtualizarAsync(
+            EditarProjetoViewModel model)
         {
-            if (await _professorRepository.ObterPorIdAsync(model.ProfessorId.Value) is null) return false; //
+            var professor = await _professorRepository
+                .ObterPorIdAsync(model.ProfessorId.Value);
 
-            return await _projetoRepository.AtualizarAsync(new Projeto
+            if (professor is null)
+                return false;
+
+            var projeto = new Projeto
             {
                 Id = model.Id,
                 Titulo = model.Titulo,
                 Descricao = model.Descricao,
                 CargaHoraria = model.CargaHoraria,
-                ProfessorId = model.ProfessorId.Value //
-            });
+                ProfessorId = model.ProfessorId.Value
+            };
+
+            return await _projetoRepository.AtualizarAsync(projeto);
         }
 
-        public Task<bool> RemoverAsync(int id) => _projetoRepository.RemoverAsync(id);
-
-        private async Task<List<Projeto>> VincularProfessoresAsync(List<Projeto> projetos)
+        public Task<bool> RemoverAsync(int id)
         {
-            var professoresPorId = (await _professorRepository.ListarAsync()).ToDictionary(professor => professor.Id);
-            foreach (var projeto in projetos)
-                projeto.Professor = professoresPorId.GetValueOrDefault(projeto.ProfessorId);
-            return projetos;
+            return _projetoRepository.RemoverAsync(id);
         }
     }
 }
