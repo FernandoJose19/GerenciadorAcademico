@@ -7,4 +7,5 @@ namespace GerenciadorAcademico.Repositories
         Task<List<Professor>> ListarAsync();
         Task<Professor?> ObterPorIdAsync(int id);
     }
+
 }
