@@ -100,7 +100,8 @@ namespace GerenciadorAcademico.Services
                 Titulo = model.Titulo,
                 Descricao = model.Descricao,
                 CargaHoraria = model.CargaHoraria,
-                ProfessorId = model.ProfessorId.Value
+                ProfessorId = model.ProfessorId.Value,
+                //Area = model.Area
             };
 
             return await _projetoRepository.AtualizarAsync(projeto);

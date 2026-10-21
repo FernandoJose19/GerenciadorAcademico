@@ -25,4 +25,8 @@ public class ProjetoFormularioViewModel
     public int? ProfessorId { get; set; }
 
     public List<SelectListItem> Professores { get; set; } = [];
+
+    //[Display(Name = "Área")]
+    //public string? Area { get; set; } 
+
 }
