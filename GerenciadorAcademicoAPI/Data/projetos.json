@@ -1,0 +1,402 @@
+[
+  {
+    "Id": 1,
+    "Titulo": "Rob\u00F3tica Educacional",
+    "Descricao": "Projeto acad\u00EAmico voltado ao estudo e \u00E0 aplica\u00E7\u00E3o de rob\u00F3tica educacional, integrando atividades te\u00F3ricas e pr\u00E1ticas.",
+    "CargaHoraria": 20,
+    "ProfessorId": 1,
+    "Professor": null
+  },
+  {
+    "Id": 2,
+    "Titulo": "Programa\u00E7\u00E3o Web com ASP.NET Core",
+    "Descricao": "Projeto acad\u00EAmico voltado ao estudo e \u00E0 aplica\u00E7\u00E3o de programa\u00E7\u00E3o web com asp.net core, integrando atividades te\u00F3ricas e pr\u00E1ticas.",
+    "CargaHoraria": 30,
+    "ProfessorId": 2,
+    "Professor": null
+  },
+  {
+    "Id": 3,
+    "Titulo": "Inclus\u00E3o Digital para a Comunidade",
+    "Descricao": "Projeto acad\u00EAmico voltado ao estudo e \u00E0 aplica\u00E7\u00E3o de inclus\u00E3o digital para a comunidade, integrando atividades te\u00F3ricas e pr\u00E1ticas.",
+    "CargaHoraria": 40,
+    "ProfessorId": 3,
+    "Professor": null
+  },
+  {
+    "Id": 4,
+    "Titulo": "Laborat\u00F3rio de Redes de Computadores",
+    "Descricao": "Projeto acad\u00EAmico voltado ao estudo e \u00E0 aplica\u00E7\u00E3o de laborat\u00F3rio de redes de computadores, integrando atividades te\u00F3ricas e pr\u00E1ticas.",
+    "CargaHoraria": 60,
+    "ProfessorId": 4,
+    "Professor": null
+  },
+  {
+    "Id": 5,
+    "Titulo": "Desenvolvimento de Aplicativos M\u00F3veis",
+    "Descricao": "Projeto acad\u00EAmico voltado ao estudo e \u00E0 aplica\u00E7\u00E3o de desenvolvimento de aplicativos m\u00F3veis, integrando atividades te\u00F3ricas e pr\u00E1ticas.",
+    "CargaHoraria": 80,
+    "ProfessorId": 5,
+    "Professor": null
+  },
+  {
+    "Id": 6,
+    "Titulo": "Pensamento Computacional na Escola",
+    "Descricao": "Projeto acad\u00EAmico voltado ao estudo e \u00E0 aplica\u00E7\u00E3o de pensamento computacional na escola, integrando atividades te\u00F3ricas e pr\u00E1ticas.",
+    "CargaHoraria": 100,
+    "ProfessorId": 6,
+    "Professor": null
+  },
+  {
+    "Id": 7,
+    "Titulo": "Seguran\u00E7a da Informa\u00E7\u00E3o",
+    "Descricao": "Projeto acad\u00EAmico voltado ao estudo e \u00E0 aplica\u00E7\u00E3o de seguran\u00E7a da informa\u00E7\u00E3o, integrando atividades te\u00F3ricas e pr\u00E1ticas.",
+    "CargaHoraria": 120,
+    "ProfessorId": 7,
+    "Professor": null
+  },
+  {
+    "Id": 8,
+    "Titulo": "Banco de Dados Aplicado",
+    "Descricao": "Projeto acad\u00EAmico voltado ao estudo e \u00E0 aplica\u00E7\u00E3o de banco de dados aplicado, integrando atividades te\u00F3ricas e pr\u00E1ticas.",
+    "CargaHoraria": 20,
+    "ProfessorId": 8,
+    "Professor": null
+  },
+  {
+    "Id": 9,
+    "Titulo": "Intelig\u00EAncia Artificial na Educa\u00E7\u00E3o",
+    "Descricao": "Projeto acad\u00EAmico voltado ao estudo e \u00E0 aplica\u00E7\u00E3o de intelig\u00EAncia artificial na educa\u00E7\u00E3o, integrando atividades te\u00F3ricas e pr\u00E1ticas.",
+    "CargaHoraria": 30,
+    "ProfessorId": 9,
+    "Professor": null
+  },
+  {
+    "Id": 10,
+    "Titulo": "Clube de Ci\u00EAncias e Tecnologia",
+    "Descricao": "Projeto acad\u00EAmico voltado ao estudo e \u00E0 aplica\u00E7\u00E3o de clube de ci\u00EAncias e tecnologia, integrando atividades te\u00F3ricas e pr\u00E1ticas.",
+    "CargaHoraria": 40,
+    "ProfessorId": 10,
+    "Professor": null
+  },
+  {
+    "Id": 11,
+    "Titulo": "Matem\u00E1tica com Recursos Digitais",
+    "Descricao": "Projeto acad\u00EAmico voltado ao estudo e \u00E0 aplica\u00E7\u00E3o de matem\u00E1tica com recursos digitais, integrando atividades te\u00F3ricas e pr\u00E1ticas.",
+    "CargaHoraria": 60,
+    "ProfessorId": 11,
+    "Professor": null
+  },
+  {
+    "Id": 12,
+    "Titulo": "Produ\u00E7\u00E3o de Podcasts Educacionais",
+    "Descricao": "Projeto acad\u00EAmico voltado ao estudo e \u00E0 aplica\u00E7\u00E3o de produ\u00E7\u00E3o de podcasts educacionais, integrando atividades te\u00F3ricas e pr\u00E1ticas.",
+    "CargaHoraria": 80,
+    "ProfessorId": 12,
+    "Professor": null
+  },
+  {
+    "Id": 13,
+    "Titulo": "Cria\u00E7\u00E3o de Jogos Digitais",
+    "Descricao": "Projeto acad\u00EAmico voltado ao estudo e \u00E0 aplica\u00E7\u00E3o de cria\u00E7\u00E3o de jogos digitais, integrando atividades te\u00F3ricas e pr\u00E1ticas.",
+    "CargaHoraria": 100,
+    "ProfessorId": 13,
+    "Professor": null
+  },
+  {
+    "Id": 14,
+    "Titulo": "Internet das Coisas no Ambiente Escolar",
+    "Descricao": "Projeto acad\u00EAmico voltado ao estudo e \u00E0 aplica\u00E7\u00E3o de internet das coisas no ambiente escolar, integrando atividades te\u00F3ricas e pr\u00E1ticas.",
+    "CargaHoraria": 120,
+    "ProfessorId": 14,
+    "Professor": null
+  },
+  {
+    "Id": 15,
+    "Titulo": "Impress\u00E3o 3D e Aprendizagem Criativa",
+    "Descricao": "Projeto acad\u00EAmico voltado ao estudo e \u00E0 aplica\u00E7\u00E3o de impress\u00E3o 3d e aprendizagem criativa, integrando atividades te\u00F3ricas e pr\u00E1ticas.",
+    "CargaHoraria": 20,
+    "ProfessorId": 15,
+    "Professor": null
+  },
+  {
+    "Id": 16,
+    "Titulo": "Desenvolvimento de APIs REST",
+    "Descricao": "Projeto acad\u00EAmico voltado ao estudo e \u00E0 aplica\u00E7\u00E3o de desenvolvimento de apis rest, integrando atividades te\u00F3ricas e pr\u00E1ticas.",
+    "CargaHoraria": 30,
+    "ProfessorId": 16,
+    "Professor": null
+  },
+  {
+    "Id": 17,
+    "Titulo": "Educa\u00E7\u00E3o Financeira com Tecnologia",
+    "Descricao": "Projeto acad\u00EAmico voltado ao estudo e \u00E0 aplica\u00E7\u00E3o de educa\u00E7\u00E3o financeira com tecnologia, integrando atividades te\u00F3ricas e pr\u00E1ticas.",
+    "CargaHoraria": 40,
+    "ProfessorId": 17,
+    "Professor": null
+  },
+  {
+    "Id": 18,
+    "Titulo": "Monitoramento Ambiental com Sensores",
+    "Descricao": "Projeto acad\u00EAmico voltado ao estudo e \u00E0 aplica\u00E7\u00E3o de monitoramento ambiental com sensores, integrando atividades te\u00F3ricas e pr\u00E1ticas.",
+    "CargaHoraria": 60,
+    "ProfessorId": 18,
+    "Professor": null
+  },
+  {
+    "Id": 19,
+    "Titulo": "Cultura Maker na Educa\u00E7\u00E3o",
+    "Descricao": "Projeto acad\u00EAmico voltado ao estudo e \u00E0 aplica\u00E7\u00E3o de cultura maker na educa\u00E7\u00E3o, integrando atividades te\u00F3ricas e pr\u00E1ticas.",
+    "CargaHoraria": 80,
+    "ProfessorId": 19,
+    "Professor": null
+  },
+  {
+    "Id": 20,
+    "Titulo": "Acessibilidade Digital",
+    "Descricao": "Projeto acad\u00EAmico voltado ao estudo e \u00E0 aplica\u00E7\u00E3o de acessibilidade digital, integrando atividades te\u00F3ricas e pr\u00E1ticas.",
+    "CargaHoraria": 100,
+    "ProfessorId": 20,
+    "Professor": null
+  },
+  {
+    "Id": 21,
+    "Titulo": "Programa\u00E7\u00E3o para Iniciantes",
+    "Descricao": "Projeto acad\u00EAmico voltado ao estudo e \u00E0 aplica\u00E7\u00E3o de programa\u00E7\u00E3o para iniciantes, integrando atividades te\u00F3ricas e pr\u00E1ticas.",
+    "CargaHoraria": 120,
+    "ProfessorId": 21,
+    "Professor": null
+  },
+  {
+    "Id": 22,
+    "Titulo": "Administra\u00E7\u00E3o de Servidores Linux",
+    "Descricao": "Projeto acad\u00EAmico voltado ao estudo e \u00E0 aplica\u00E7\u00E3o de administra\u00E7\u00E3o de servidores linux, integrando atividades te\u00F3ricas e pr\u00E1ticas.",
+    "CargaHoraria": 20,
+    "ProfessorId": 22,
+    "Professor": null
+  },
+  {
+    "Id": 23,
+    "Titulo": "Infraestrutura de Redes sem Fio",
+    "Descricao": "Projeto acad\u00EAmico voltado ao estudo e \u00E0 aplica\u00E7\u00E3o de infraestrutura de redes sem fio, integrando atividades te\u00F3ricas e pr\u00E1ticas.",
+    "CargaHoraria": 30,
+    "ProfessorId": 23,
+    "Professor": null
+  },
+  {
+    "Id": 24,
+    "Titulo": "Desenvolvimento Front-end Responsivo",
+    "Descricao": "Projeto acad\u00EAmico voltado ao estudo e \u00E0 aplica\u00E7\u00E3o de desenvolvimento front-end responsivo, integrando atividades te\u00F3ricas e pr\u00E1ticas.",
+    "CargaHoraria": 40,
+    "ProfessorId": 24,
+    "Professor": null
+  },
+  {
+    "Id": 25,
+    "Titulo": "Modelagem de Sistemas",
+    "Descricao": "Projeto acad\u00EAmico voltado ao estudo e \u00E0 aplica\u00E7\u00E3o de modelagem de sistemas, integrando atividades te\u00F3ricas e pr\u00E1ticas.",
+    "CargaHoraria": 60,
+    "ProfessorId": 25,
+    "Professor": null
+  },
+  {
+    "Id": 26,
+    "Titulo": "Versionamento de C\u00F3digo com Git",
+    "Descricao": "Projeto acad\u00EAmico voltado ao estudo e \u00E0 aplica\u00E7\u00E3o de versionamento de c\u00F3digo com git, integrando atividades te\u00F3ricas e pr\u00E1ticas.",
+    "CargaHoraria": 80,
+    "ProfessorId": 26,
+    "Professor": null
+  },
+  {
+    "Id": 27,
+    "Titulo": "Computa\u00E7\u00E3o em Nuvem",
+    "Descricao": "Projeto acad\u00EAmico voltado ao estudo e \u00E0 aplica\u00E7\u00E3o de computa\u00E7\u00E3o em nuvem, integrando atividades te\u00F3ricas e pr\u00E1ticas.",
+    "CargaHoraria": 100,
+    "ProfessorId": 27,
+    "Professor": null
+  },
+  {
+    "Id": 28,
+    "Titulo": "Ci\u00EAncia de Dados na Educa\u00E7\u00E3o",
+    "Descricao": "Projeto acad\u00EAmico voltado ao estudo e \u00E0 aplica\u00E7\u00E3o de ci\u00EAncia de dados na educa\u00E7\u00E3o, integrando atividades te\u00F3ricas e pr\u00E1ticas.",
+    "CargaHoraria": 120,
+    "ProfessorId": 28,
+    "Professor": null
+  },
+  {
+    "Id": 29,
+    "Titulo": "Automa\u00E7\u00E3o de Processos Escolares",
+    "Descricao": "Projeto acad\u00EAmico voltado ao estudo e \u00E0 aplica\u00E7\u00E3o de automa\u00E7\u00E3o de processos escolares, integrando atividades te\u00F3ricas e pr\u00E1ticas.",
+    "CargaHoraria": 20,
+    "ProfessorId": 29,
+    "Professor": null
+  },
+  {
+    "Id": 30,
+    "Titulo": "Realidade Virtual na Aprendizagem",
+    "Descricao": "Projeto acad\u00EAmico voltado ao estudo e \u00E0 aplica\u00E7\u00E3o de realidade virtual na aprendizagem, integrando atividades te\u00F3ricas e pr\u00E1ticas.",
+    "CargaHoraria": 30,
+    "ProfessorId": 30,
+    "Professor": null
+  },
+  {
+    "Id": 31,
+    "Titulo": "Desenvolvimento de Sistemas Acad\u00EAmicos",
+    "Descricao": "Projeto acad\u00EAmico voltado ao estudo e \u00E0 aplica\u00E7\u00E3o de desenvolvimento de sistemas acad\u00EAmicos, integrando atividades te\u00F3ricas e pr\u00E1ticas.",
+    "CargaHoraria": 40,
+    "ProfessorId": 1,
+    "Professor": null
+  },
+  {
+    "Id": 32,
+    "Titulo": "Laborat\u00F3rio de Manuten\u00E7\u00E3o de Computadores",
+    "Descricao": "Projeto acad\u00EAmico voltado ao estudo e \u00E0 aplica\u00E7\u00E3o de laborat\u00F3rio de manuten\u00E7\u00E3o de computadores, integrando atividades te\u00F3ricas e pr\u00E1ticas.",
+    "CargaHoraria": 60,
+    "ProfessorId": 2,
+    "Professor": null
+  },
+  {
+    "Id": 33,
+    "Titulo": "Empreendedorismo e Inova\u00E7\u00E3o Tecnol\u00F3gica",
+    "Descricao": "Projeto acad\u00EAmico voltado ao estudo e \u00E0 aplica\u00E7\u00E3o de empreendedorismo e inova\u00E7\u00E3o tecnol\u00F3gica, integrando atividades te\u00F3ricas e pr\u00E1ticas.",
+    "CargaHoraria": 80,
+    "ProfessorId": 3,
+    "Professor": null
+  },
+  {
+    "Id": 34,
+    "Titulo": "Metodologias Ativas com Tecnologias",
+    "Descricao": "Projeto acad\u00EAmico voltado ao estudo e \u00E0 aplica\u00E7\u00E3o de metodologias ativas com tecnologias, integrando atividades te\u00F3ricas e pr\u00E1ticas.",
+    "CargaHoraria": 100,
+    "ProfessorId": 4,
+    "Professor": null
+  },
+  {
+    "Id": 35,
+    "Titulo": "Letramento Digital",
+    "Descricao": "Projeto acad\u00EAmico voltado ao estudo e \u00E0 aplica\u00E7\u00E3o de letramento digital, integrando atividades te\u00F3ricas e pr\u00E1ticas.",
+    "CargaHoraria": 120,
+    "ProfessorId": 5,
+    "Professor": null
+  },
+  {
+    "Id": 36,
+    "Titulo": "Design de Interfaces Educacionais",
+    "Descricao": "Projeto acad\u00EAmico voltado ao estudo e \u00E0 aplica\u00E7\u00E3o de design de interfaces educacionais, integrando atividades te\u00F3ricas e pr\u00E1ticas.",
+    "CargaHoraria": 20,
+    "ProfessorId": 6,
+    "Professor": null
+  },
+  {
+    "Id": 37,
+    "Titulo": "Privacidade e Prote\u00E7\u00E3o de Dados",
+    "Descricao": "Projeto acad\u00EAmico voltado ao estudo e \u00E0 aplica\u00E7\u00E3o de privacidade e prote\u00E7\u00E3o de dados, integrando atividades te\u00F3ricas e pr\u00E1ticas.",
+    "CargaHoraria": 30,
+    "ProfessorId": 7,
+    "Professor": null
+  },
+  {
+    "Id": 38,
+    "Titulo": "Aprendizagem Baseada em Projetos",
+    "Descricao": "Projeto acad\u00EAmico voltado ao estudo e \u00E0 aplica\u00E7\u00E3o de aprendizagem baseada em projetos, integrando atividades te\u00F3ricas e pr\u00E1ticas.",
+    "CargaHoraria": 40,
+    "ProfessorId": 8,
+    "Professor": null
+  },
+  {
+    "Id": 39,
+    "Titulo": "Observat\u00F3rio de Indicadores Educacionais",
+    "Descricao": "Projeto acad\u00EAmico voltado ao estudo e \u00E0 aplica\u00E7\u00E3o de observat\u00F3rio de indicadores educacionais, integrando atividades te\u00F3ricas e pr\u00E1ticas.",
+    "CargaHoraria": 60,
+    "ProfessorId": 9,
+    "Professor": null
+  },
+  {
+    "Id": 40,
+    "Titulo": "Tecnologias Assistivas",
+    "Descricao": "Projeto acad\u00EAmico voltado ao estudo e \u00E0 aplica\u00E7\u00E3o de tecnologias assistivas, integrando atividades te\u00F3ricas e pr\u00E1ticas.",
+    "CargaHoraria": 80,
+    "ProfessorId": 10,
+    "Professor": null
+  },
+  {
+    "Id": 41,
+    "Titulo": "Introdu\u00E7\u00E3o \u00E0 Ciberseguran\u00E7a",
+    "Descricao": "Projeto acad\u00EAmico voltado ao estudo e \u00E0 aplica\u00E7\u00E3o de introdu\u00E7\u00E3o \u00E0 ciberseguran\u00E7a, integrando atividades te\u00F3ricas e pr\u00E1ticas.",
+    "CargaHoraria": 100,
+    "ProfessorId": 11,
+    "Professor": null
+  },
+  {
+    "Id": 42,
+    "Titulo": "Desenvolvimento de Portf\u00F3lios Digitais",
+    "Descricao": "Projeto acad\u00EAmico voltado ao estudo e \u00E0 aplica\u00E7\u00E3o de desenvolvimento de portf\u00F3lios digitais, integrando atividades te\u00F3ricas e pr\u00E1ticas.",
+    "CargaHoraria": 120,
+    "ProfessorId": 12,
+    "Professor": null
+  },
+  {
+    "Id": 43,
+    "Titulo": "Educa\u00E7\u00E3o Midi\u00E1tica",
+    "Descricao": "Projeto acad\u00EAmico voltado ao estudo e \u00E0 aplica\u00E7\u00E3o de educa\u00E7\u00E3o midi\u00E1tica, integrando atividades te\u00F3ricas e pr\u00E1ticas.",
+    "CargaHoraria": 20,
+    "ProfessorId": 13,
+    "Professor": null
+  },
+  {
+    "Id": 44,
+    "Titulo": "Aplica\u00E7\u00F5es Web Progressivas",
+    "Descricao": "Projeto acad\u00EAmico voltado ao estudo e \u00E0 aplica\u00E7\u00E3o de aplica\u00E7\u00F5es web progressivas, integrando atividades te\u00F3ricas e pr\u00E1ticas.",
+    "CargaHoraria": 30,
+    "ProfessorId": 14,
+    "Professor": null
+  },
+  {
+    "Id": 45,
+    "Titulo": "Gest\u00E3o de Projetos de Software",
+    "Descricao": "Projeto acad\u00EAmico voltado ao estudo e \u00E0 aplica\u00E7\u00E3o de gest\u00E3o de projetos de software, integrando atividades te\u00F3ricas e pr\u00E1ticas.",
+    "CargaHoraria": 40,
+    "ProfessorId": 15,
+    "Professor": null
+  },
+  {
+    "Id": 46,
+    "Titulo": "Laborat\u00F3rio de Algoritmos",
+    "Descricao": "Projeto acad\u00EAmico voltado ao estudo e \u00E0 aplica\u00E7\u00E3o de laborat\u00F3rio de algoritmos, integrando atividades te\u00F3ricas e pr\u00E1ticas.",
+    "CargaHoraria": 60,
+    "ProfessorId": 16,
+    "Professor": null
+  },
+  {
+    "Id": 47,
+    "Titulo": "Sustentabilidade e Tecnologia",
+    "Descricao": "Projeto acad\u00EAmico voltado ao estudo e \u00E0 aplica\u00E7\u00E3o de sustentabilidade e tecnologia, integrando atividades te\u00F3ricas e pr\u00E1ticas.",
+    "CargaHoraria": 80,
+    "ProfessorId": 17,
+    "Professor": null
+  },
+  {
+    "Id": 48,
+    "Titulo": "Comunica\u00E7\u00E3o Digital Institucional",
+    "Descricao": "Projeto acad\u00EAmico voltado ao estudo e \u00E0 aplica\u00E7\u00E3o de comunica\u00E7\u00E3o digital institucional, integrando atividades te\u00F3ricas e pr\u00E1ticas.",
+    "CargaHoraria": 100,
+    "ProfessorId": 18,
+    "Professor": null
+  },
+  {
+    "Id": 49,
+    "Titulo": "Forma\u00E7\u00E3o Docente para Uso de IA",
+    "Descricao": "Projeto acad\u00EAmico voltado ao estudo e \u00E0 aplica\u00E7\u00E3o de forma\u00E7\u00E3o docente para uso de ia, integrando atividades te\u00F3ricas e pr\u00E1ticas.",
+    "CargaHoraria": 120,
+    "ProfessorId": 19,
+    "Professor": null
+  },
+  {
+    "Id": 50,
+    "Titulo": "Feira de Inova\u00E7\u00E3o e Tecnologia",
+    "Descricao": "Projeto acad\u00EAmico voltado ao estudo e \u00E0 aplica\u00E7\u00E3o de feira de inova\u00E7\u00E3o e tecnologia, integrando atividades te\u00F3ricas e pr\u00E1ticas.",
+    "CargaHoraria": 20,
+    "ProfessorId": 20,
+    "Professor": null
+  }
+]

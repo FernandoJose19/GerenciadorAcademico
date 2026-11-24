@@ -1,3 +1,5 @@
+using System.Text.Json.Serialization;
+
 using GerenciadorAcademicoAPI.Data;
 using GerenciadorAcademicoAPI.Repositories;
 using GerenciadorAcademicoAPI.Services;
@@ -15,12 +17,6 @@ namespace GerenciadorAcademicoAPI
 
             builder.Services.AddControllers();
 
-            builder.Services.AddScoped<IProjetoRepository, ProjetoEfRepository>();
-
-            builder.Services.AddScoped<IProfessorRepository, ProfessorEfRepository>();
-
-            builder.Services.AddScoped<IProjetoService, ProjetoService>();
-
             var connectionString = builder.Configuration
             .GetConnectionString("AcademicoConnection")
             ?? throw new InvalidOperationException(
@@ -29,9 +25,22 @@ namespace GerenciadorAcademicoAPI
             builder.Services.AddDbContext<AcademicoContext>(options =>
                 options.UseSqlServer(connectionString));
 
+            builder.Services.AddControllers()
+                .AddJsonOptions(options =>
+                {
+                    options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles;
+                });
+
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
+
             builder.Services.AddSwaggerGen();
+
+            builder.Services.AddScoped<IProjetoRepository, ProjetoEfRepository>();
+
+            builder.Services.AddScoped<IProfessorRepository, ProfessorEfRepository>();
+
+            builder.Services.AddScoped<IProjetoService, ProjetoService>();
 
             var app = builder.Build();
 

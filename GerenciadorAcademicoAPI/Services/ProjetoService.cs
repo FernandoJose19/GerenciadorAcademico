@@ -1,6 +1,6 @@
 ﻿using GerenciadorAcademicoAPI.Models;
 using GerenciadorAcademicoAPI.Repositories;
-//using GerenciadorAcademicoAPI.ViewModels;
+using GerenciadorAcademicoAPI.ViewModels;
 
 namespace GerenciadorAcademicoAPI.Services
 {
@@ -63,10 +63,10 @@ namespace GerenciadorAcademicoAPI.Services
             return _projetoRepository.ObterPorIdAsync(id);
         }
 
-        public async Task AdicionarAsync(Projeto model)
+        public async Task AdicionarAsync(NovoProjetoViewModel model)
         {
             var professor = await _professorRepository
-                .ObterPorIdAsync(model.ProfessorId);
+                .ObterPorIdAsync(model.ProfessorId.Value);
 
             if (professor is null)
             {
@@ -79,18 +79,17 @@ namespace GerenciadorAcademicoAPI.Services
                 Titulo = model.Titulo,
                 Descricao = model.Descricao,
                 CargaHoraria = model.CargaHoraria,
-                ProfessorId = model.ProfessorId,
-                Area = model.Area
+                ProfessorId = model.ProfessorId.Value,
+                //Area = model.Area
             };
 
             await _projetoRepository.AdicionarAsync(projeto);
         }
 
-        public async Task<bool> AtualizarAsync(
-            Projeto model)
+        public async Task<bool> AtualizarAsync (EditarProjetoViewModel model)
         {
             var professor = await _professorRepository
-                .ObterPorIdAsync(model.ProfessorId);
+                .ObterPorIdAsync(model.ProfessorId.Value);
 
             if (professor is null)
                 return false;
@@ -101,7 +100,7 @@ namespace GerenciadorAcademicoAPI.Services
                 Titulo = model.Titulo,
                 Descricao = model.Descricao,
                 CargaHoraria = model.CargaHoraria,
-                ProfessorId = model.ProfessorId
+                ProfessorId = model.ProfessorId.Value
             };
 
             return await _projetoRepository.AtualizarAsync(projeto);
