@@ -1,6 +1,7 @@
 ﻿using GerenciadorAcademicoAPI.Models;
 using Microsoft.EntityFrameworkCore;
 
+
 namespace GerenciadorAcademicoAPI.Data
 {
     public class AcademicoContext : DbContext
