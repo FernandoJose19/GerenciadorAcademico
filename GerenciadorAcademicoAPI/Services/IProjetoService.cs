@@ -1,5 +1,5 @@
 ﻿using GerenciadorAcademicoAPI.Models;
-//using GerenciadorAcademicoAPI.ViewModels;
+using GerenciadorAcademicoAPI.ViewModels;
 
 namespace GerenciadorAcademicoAPI.Services
 {
@@ -10,8 +10,8 @@ namespace GerenciadorAcademicoAPI.Services
         List<Projeto> Ordenar(IEnumerable<Projeto> projetos, string? ordenarPor);
         Task<Projeto?> ObterPorIdAsync(int id);
         Task<List<Professor>> ListarProfessoresAsync();
-        Task AdicionarAsync(Projeto model);
-        Task<bool> AtualizarAsync(Projeto model);
+        Task AdicionarAsync(NovoProjetoViewModel model);
+        Task<bool> AtualizarAsync(EditarProjetoViewModel model);
         Task<bool> RemoverAsync(int id);
     }
 }
