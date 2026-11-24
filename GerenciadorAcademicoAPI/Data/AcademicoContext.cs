@@ -15,7 +15,7 @@ namespace GerenciadorAcademicoAPI.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            //tabelas
+            
             base.OnModelCreating(modelBuilder);
             modelBuilder.Entity<Professor>(e =>
             {
